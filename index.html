@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>For You · Elegant Invitation</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0b0a0c;
+            background-image: radial-gradient(circle at 20% 30%, #1e1a1c 0%, #0a0809 90%);
+            color: #f1e9e2;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* subtle noise overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBkPSJNMjAgMjBhMTAgMTAgMCAwIDEgMTAgMTAgMTAgMTAgMCAwIDEtMTAgMTAgMTAgMTAgMCAwIDEtMTAtMTAgMTAgMTAgMCAwIDEgMTAtMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz48L3N2Zz4=');
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Main card */
+        .glass-panel {
+            width: min(760px, 96vw);
+            background: rgba(20, 17, 19, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(210, 170, 140, 0.18);
+            border-radius: 42px;
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 220, 180, 0.05) inset;
+            padding: clamp(24px, 6vw, 52px);
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1);
+            overflow: hidden;
+        }
+
+        .glass-panel::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #d4a78f, #b3876f, #d4a78f, transparent);
+            opacity: 0.7;
+        }
+
+        /* pages */
+        .page {
+            display: none;
+            animation: elegantFade 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes elegantFade {
+            0% { opacity: 0; transform: translateY(16px) scale(0.98); filter: blur(4px); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+
+        /* typography */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 8vw, 4rem);
+            line-height: 1.1;
+            color: #f3e1d4;
+            text-shadow: 0 2px 20px rgba(220, 170, 140, 0.3);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 5vw, 2.6rem);
+            line-height: 1.2;
+            color: #e9d5c6;
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #cfc1b8;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
+
+        .small {
+            font-size: 0.9rem;
+            color: #a99a91;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        /* buttons */
+        .btn {
+            border: none;
+            background: rgba(180, 140, 120, 0.15);
+            backdrop-filter: blur(8px);
+            color: #f0dfd4;
+            padding: 14px 32px;
+            margin: 8px 6px;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+            border: 1px solid rgba(230, 190, 160, 0.25);
+            box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn i {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .btn:hover {
+            background: rgba(200, 160, 140, 0.25);
+            border-color: rgba(230, 200, 170, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 18px 30px -12px #00000080, 0 0 0 1px rgba(220, 180, 150, 0.3) inset;
+            color: #ffffff;
+        }
+
+        .btn:active {
+            transform: translateY(0px);
+            box-shadow: 0 4px 12px -4px black;
+        }
+
+        .btn-primary {
+            background: linear-gradient(145deg, #a9745c, #7b5643);
+            border: 1px solid rgba(255, 210, 180, 0.5);
+            color: #0f0d0e;
+            font-weight: 600;
+            box-shadow: 0 12px 28px -10px #ac7f67;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(145deg, #c08c73, #936b57);
+            box-shadow: 0 20px 35px -12px #b3886e;
+            color: #0a0808;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(180, 150, 130, 0.4);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(180, 150, 130, 0.1);
+            border-color: #b99b8a;
+        }
+
+        /* envelope redesign */
+        .envelope-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 25px;
+        }
+
+        .envelope {
+            width: 220px;
+            height: 150px;
+            background: linear-gradient(145deg, #2b1f1b, #1e1512);
+            border-radius: 18px;
+            border: 1.5px solid rgba(210, 160, 130, 0.5);
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 25px 40px -12px #000000, 0 0 0 1px rgba(220, 180, 150, 0.1) inset;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1);
+            overflow: hidden;
+        }
+
+        .envelope:hover {
+            transform: scale(1.02) rotate(0.5deg);
+            border-color: rgba(230, 190, 160, 0.9);
+            box-shadow: 0 30px 50px -15px #b38b72;
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 48%, rgba(180, 130, 100, 0.3) 50%, transparent 52%),
+                        linear-gradient(225deg, transparent 48%, rgba(180, 130, 100, 0.3) 50%, transparent 52%);
+            opacity: 0.6;
+        }
+
+        .seal {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #b35c5c, #6e3a3a);
+            color: #f0d7c7;
+            display: grid;
+            place-items: center;
+            font-size: 26px;
+            z-index: 3;
+            box-shadow: 0 0 0 3px rgba(230, 190, 160, 0.5), 0 8px 18px #00000060;
+            transition: all 0.3s ease;
+        }
+
+        .envelope:hover .seal {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: radial-gradient(circle at 30% 30%, #c46a6a, #7d4343);
+            box-shadow: 0 0 0 5px rgba(240, 200, 170, 0.6), 0 8px 22px black;
+        }
+
+        /* places grid */
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 25px 0 15px;
+        }
+
+        .place-card {
+            background: rgba(30, 24, 22, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(200, 160, 130, 0.2);
+            border-radius: 24px;
+            padding: 24px 16px 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 15px 25px -15px #000000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .place-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #b68b73, transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .place-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(220, 180, 150, 0.6);
+            background: rgba(45, 35, 30, 0.8);
+            box-shadow: 0 25px 35px -15px #000000, 0 0 0 1px rgba(210, 170, 140, 0.3) inset;
+        }
+
+        .place-card:hover::before {
+            opacity: 1;
+        }
+
+        .place-icon {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 8px 12px #00000060);
+            transition: transform 0.3s;
+        }
+
+        .place-card:hover .place-icon {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        .place-card strong {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #ebd9cc;
+            line-height: 1.4;
+            letter-spacing: 0.2px;
+        }
+
+        /* choice highlight */
+        .choice-badge {
+            display: inline-block;
+            background: rgba(150, 110, 90, 0.25);
+            border: 1px solid rgba(210, 170, 140, 0.4);
+            padding: 8px 22px;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            margin-top: 16px;
+            color: #e5cdbd;
+            letter-spacing: 0.3px;
+            backdrop-filter: blur(6px);
+        }
+
+        /* floating hearts */
+        .heart {
+            position: fixed;
+            pointer-events: none;
+            animation: floatUp 6s linear forwards;
+            opacity: 0.8;
+            z-index: 100;
+            color: #c99f88;
+            text-shadow: 0 0 12px #b98c72;
+            font-size: 1.5rem;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.8); opacity: 0; }
+            15% { opacity: 0.9; }
+            85% { opacity: 0.6; }
+            100% { transform: translateY(-20vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* music button - elegant */
+        .music-control {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 200;
+            background: rgba(20, 16, 14, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(210, 170, 140, 0.3);
+            color: #e3cfc0;
+            padding: 12px 22px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -10px black;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .music-control:hover {
+            background: rgba(50, 40, 35, 0.9);
+            border-color: #c9a68e;
+            transform: scale(1.02);
+        }
+
+        .music-control i {
+            font-size: 1.1rem;
+            color: #dbb99e;
+        }
+
+        audio {
+            display: none;
+        }
+
+        /* fine details */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #b38b72, transparent);
+            margin: 22px auto;
+            opacity: 0.6;
+        }
+
+        .open-map-btn {
+            margin-top: 14px;
+        }
+
+        /* responsive */
+        @media (max-width: 560px) {
+            .places-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .glass-panel {
+                padding: 26px 18px;
+                border-radius: 32px;
+            }
+
+            .btn {
+                padding: 12px 22px;
+                font-size: 0.95rem;
+                width: 100%;
+                margin: 6px 0;
+            }
+
+            .music-control {
+                top: 16px;
+                right: 16px;
+                padding: 10px 18px;
+                font-size: 0.8rem;
+            }
+
+            .envelope {
+                width: 180px;
+                height: 125px;
+            }
+
+            .seal {
+                width: 46px;
+                height: 46px;
+                font-size: 22px;
+            }
+        }
+
+        /* subtle glow animations */
+        .glow-text {
+            animation: softGlow 3s infinite alternate;
+        }
+
+        @keyframes softGlow {
+            0% { text-shadow: 0 0 10px rgba(220, 170, 140, 0.2); }
+            100% { text-shadow: 0 0 25px rgba(230, 180, 150, 0.6); }
+        }
+
+        .page p i {
+            color: #cfa88f;
+            margin-right: 4px;
+        }
+
+        /* custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0809;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5c443a;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AUDIO ELEMENT (lokal) -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="Apocalypse - SOUND BACKGROUND.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <!-- Music toggle -->
+    <div class="music-control" onclick="toggleMusic()">
+        <i class="fas fa-music" id="musicIcon"></i>
+        <span id="musicText">Play</span>
+    </div>
+
+    <!-- Main Glass Panel -->
+    <div class="glass-panel">
+
+        <!-- Page 1 - Envelope -->
+        <section id="p1" class="page active">
+            <div style="text-align: center;">
+                <div class="envelope-wrapper">
+                    <div class="envelope" onclick="openLetter()">
+                        <div class="seal">♡</div>
+                    </div>
+                </div>
+                <p class="small" style="letter-spacing: 4px; margin-bottom: 6px;">✦ undangan ✦</p>
+                <h1 style="font-size: clamp(2rem, 7vw, 3.2rem);">Hey, you.</h1>
+                <p style="font-size: 1.1rem; max-width: 400px; margin: 10px auto;">I made something special for you.</p>
+                <p class="small" style="margin-top: 20px; opacity: 0.8;">tap the envelope ♡</p>
+            </div>
+        </section>
+
+        <!-- Page 2 - I like you -->
+        <section id="p2" class="page">
+            <div style="text-align: center;">
+                <p class="small" style="letter-spacing: 3px; margin-bottom: 12px;">finally...</p>
+                <h2 style="font-weight: 400;">there’s something i want to tell you</h2>
+                <div class="divider"></div>
+                <h1 style="font-size: clamp(2.8rem, 9vw, 4.2rem);" class="glow-text">I like you. <span style="color: #d88f7c;">❤️</span></h1>
+                <p style="margin: 24px 0 20px; font-size: 1.15rem;">And I wanted you to know.</p>
+                <button class="btn btn-primary" onclick="go('p3')"><i class="fas fa-arrow-right"></i> continue</button>
+            </div>
+        </section>
+
+        <!-- Page 3 - Would you go out? -->
+        <section id="p3" class="page">
+            <div style="text-align: center;">
+                <h2 style="font-weight: 400; margin-bottom: 18px;">would you like to go out with me? <span style="color: #d88f7c;">❤️</span></h2>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 20px 0;">
+                    <button class="btn btn-primary" onclick="go('p4')"><i class="fas fa-heart"></i> YES</button>
+                    <button class="btn btn-ghost" onclick="sayNo()"><i class="fas fa-leaf"></i> NO</button>
+                </div>
+                <p id="noMsg" class="small" style="margin-top: 22px; min-height: 28px; font-style: italic;"></p>
+            </div>
+        </section>
+
+        <!-- Page 4 - Choose place -->
+        <section id="p4" class="page">
+            <div style="text-align: center;">
+                <h2 style="font-weight: 400; margin-bottom: 8px;">yay!! <span style="color: #d88f7c;">♡</span></h2>
+                <p style="margin-bottom: 6px;">now... choose a place for us.</p>
+                <div class="places-grid">
+                    <div class="place-card" onclick="selectPlace('Golden Theater Kediri','https://maps.app.goo.gl/YS6pwduyFjp6imm49?g_st=aw')">
+                        <div class="place-icon">🎬</div>
+                        <strong>Golden Theater Kediri</strong>
+                    </div>
+                    <div class="place-card" onclick="selectPlace('Lapangan Tulungrejo Kampung Inggris','https://maps.app.goo.gl/q3jxJt9sAcy8WG4m8?g_st=aw')">
+                        <div class="place-icon">🌿</div>
+                        <strong>Lapangan Tulungrejo Kampung Inggris</strong>
+                    </div>
+                    <div class="place-card" onclick="selectPlace('Perpustakaan Publik Mastrip','https://maps.app.goo.gl/QsNARJuDc5HBoJNy8?g_st=aw')">
+                        <div class="place-icon">📚</div>
+                        <strong>Perpustakaan Publik Mastrip</strong>
+                    </div>
+                    <div class="place-card" onclick="selectPlace('One Coffee Bar Pare','https://maps.app.goo.gl/GyWRPEheTBPVeqJC9?g_st=aw')">
+                        <div class="place-icon">☕</div>
+                        <strong>One Coffee Bar Pare</strong>
+                    </div>
+                </div>
+                <p id="choice" class="choice-badge" style="display: inline-block; margin-top: 10px;">— belum dipilih —</p>
+            </div>
+        </section>
+
+        <!-- Page 5 - Selected place -->
+        <section id="p5" class="page">
+            <div style="text-align: center;">
+                <h2 style="font-weight: 400;">This one! <span style="color: #d88f7c;">→ ❤️</span></h2>
+                <div class="divider"></div>
+                <p id="selectedPlace" style="font-size: 1.5rem; font-family: 'Playfair Display', serif; color: #ebd5c6; margin: 16px 0 28px;">—</p>
+                <button class="btn btn-primary" onclick="openMap()"><i class="fas fa-map-pin"></i> open location</button>
+                <button class="btn btn-ghost" onclick="go('p6')" style="margin-left: 8px;"><i class="fas fa-arrow-right"></i> continue</button>
+            </div>
+        </section>
+
+        <!-- Page 6 - Closing verse -->
+        <section id="p6" class="page">
+            <div style="text-align: center;">
+                <h2 style="font-size: 2rem; margin-bottom: 30px;">♡</h2>
+                <p style="font-size: 1.2rem; line-height: 1.9; max-width: 550px; margin: 0 auto; font-style: italic; color: #ddcec2;">
+                    Semoga di antara retakan hati yang rapuh, tumbuh sebatang cemara yang mengakar kuat pada ketulusan. 
+                    Biarkan ia menaungi setiap rapuh kita, lalu mekarlah semegah-megahnya, selalu, di pelukan hari-hari yang baru.
+                </p>
+                <div class="divider" style="margin: 40px auto 20px;"></div>
+                <p class="small" style="opacity: 0.6;">with love, always</p>
+                <button class="btn btn-ghost" onclick="go('p1')" style="margin-top: 28px;"><i class="fas fa-rotate-left"></i> back to start</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicText = document.getElementById('musicText');
+        let selectedUrl = '';
+
+        // Page navigation with fade
+        function go(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Open letter + play music
+        function openLetter() {
+            music.play().then(() => {
+                musicIcon.className = 'fas fa-pause';
+                musicText.textContent = 'Pause';
+            }).catch(() => {
+                // autoplay blocked, but we still navigate
+            });
+            go('p2');
+        }
+
+        // Toggle music
+        function toggleMusic() {
+            if (music.paused) {
+                music.play().then(() => {
+                    musicIcon.className = 'fas fa-pause';
+                    musicText.textContent = 'Pause';
+                }).catch(() => {
+                    musicText.textContent = 'Error';
+                    setTimeout(() => { musicText.textContent = 'Play'; }, 1000);
+                });
+            } else {
+                music.pause();
+                musicIcon.className = 'fas fa-music';
+                musicText.textContent = 'Play';
+            }
+        }
+
+        // Say no - elegant response
+        function sayNo() {
+            const msg = document.getElementById('noMsg');
+            msg.textContent = 'That’s completely okay ♡ Thank you for being honest.';
+            msg.style.opacity = '0.9';
+            msg.style.transition = 'opacity 0.5s';
+        }
+
+        // Select place
+        function selectPlace(name, url) {
+            selectedUrl = url;
+            document.getElementById('selectedPlace').textContent = name;
+            document.getElementById('choice').textContent = 'Selected: ' + name + ' ♡';
+            // slight delay for smoothness
+            setTimeout(() => go('p5'), 220);
+        }
+
+        // Open map link
+        function openMap() {
+            if (selectedUrl) {
+                window.open(selectedUrl, '_blank');
+            } else {
+                alert('Silakan pilih tempat terlebih dahulu ♡');
+            }
+        }
+
+        // Floating hearts & sparkles — refined
+        function createFloatingElement() {
+            const symbols = ['♡', '♥', '✦', '✧', '❥', '❤'];
+            const el = document.createElement('div');
+            el.className = 'heart';
+            el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.fontSize = (14 + Math.random() * 22) + 'px';
+            el.style.animationDuration = (4 + Math.random() * 4) + 's';
+            el.style.opacity = 0.5 + Math.random() * 0.5;
+            document.body.appendChild(el);
+
+            // Remove after animation ends
+            setTimeout(() => {
+                if (el.parentNode) el.remove();
+            }, 7000);
+        }
+
+        // Start floating effect
+        setInterval(createFloatingElement, 800);
+
+        // Also sync music icon if audio is played/paused externally
+        music.addEventListener('play', () => {
+            musicIcon.className = 'fas fa-pause';
+            musicText.textContent = 'Pause';
+        });
+        music.addEventListener('pause', () => {
+            musicIcon.className = 'fas fa-music';
+            musicText.textContent = 'Play';
+        });
+
+        // Preload envelope interaction
+        window.addEventListener('load', () => {
+            // just a small welcome effect
+            setTimeout(() => {
+                for (let i = 0; i < 6; i++) {
+                    setTimeout(createFloatingElement, i * 150);
+                }
+            }, 400);
+        });
+
+        // Prevent double-tap zoom on mobile for buttons
+        document.querySelectorAll('button, .envelope, .place-card').forEach(el => {
+            el.addEventListener('touchstart', (e) => {
+                // no-op, just to keep responsiveness
+            }, { passive: true });
+        });
+    </script>
+</body>
+</html>
