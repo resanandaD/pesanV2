@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>For You · Elegant Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    /* ============================================
+       PALET WARNA MAROON ELEGAN
+       - Maroon utama: #6b1f2c, #4a1520, #8b2d3d
+       - Rose gold: #c98998, #d9a5b0, #e8bcc4
+       - Cream: #f5e6dc, #efe0d3
+       - Deep accent: #2d0d16
+       ============================================ */
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        min-height: 100vh;
+        background: #2d0d16;
+        background-image:
+            radial-gradient(circle at 15% 20%, #4a1520 0%, transparent 50%),
+            radial-gradient(circle at 85% 80%, #6b1f2c 0%, transparent 55%),
+            radial-gradient(circle at 50% 50%, #3a1018 0%, #1a060c 100%);
+        background-attachment: fixed;
+        color: #f5e6dc;
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Noise overlay halus */
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBkPSJNMjAgMjBhMTAgMTAgMCAwIDEgMTAgMTAgMTAgMTAgMCAwIDEtMTAgMTAgMTAgMTAgMCAwIDEtMTAtMTAgMTAgMTAgMCAwIDEgMTAtMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDMiLz48L3N2Zz4=');
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* ============ MAIN PANEL ============ */
+    .glass-panel {
+        width: min(760px, 96vw);
+        background: rgba(45, 13, 22, 0.72);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        border: 1px solid rgba(201, 137, 152, 0.28);
+        border-radius: 42px;
+        box-shadow:
+            0 30px 70px -20px rgba(0, 0, 0, 0.9),
+            0 0 0 1px rgba(217, 165, 176, 0.08) inset,
+            0 0 80px rgba(139, 45, 61, 0.25);
+        padding: clamp(24px, 6vw, 52px);
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+    }
+
+    .glass-panel::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 3px;
+        background: linear-gradient(90deg, transparent, #c98998, #e8bcc4, #c98998, transparent);
+        opacity: 0.85;
+    }
+
+    /* ============ PAGES ============ */
+    .page { display: none; animation: elegantFade 0.7s cubic-bezier(0.23, 1, 0.32, 1); }
+    .page.active { display: block; }
+
+    @keyframes elegantFade {
+        0% { opacity: 0; transform: translateY(18px) scale(0.98); filter: blur(4px); }
+        100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    /* ============ TYPOGRAPHY ============ */
+    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; letter-spacing: -0.02em; }
+
+    h1 {
+        font-size: clamp(2.4rem, 8vw, 4rem);
+        line-height: 1.1;
+        color: #f5e6dc;
+        text-shadow: 0 2px 24px rgba(201, 137, 152, 0.5);
+        margin-bottom: 0.5rem;
+    }
+
+    h2 {
+        font-size: clamp(1.7rem, 5vw, 2.6rem);
+        line-height: 1.2;
+        color: #efd9d2;
+        margin-bottom: 1.2rem;
+        font-weight: 400;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #e0c5c9;
+        font-weight: 300;
+        letter-spacing: 0.01em;
+    }
+
+    .small {
+        font-size: 0.88rem;
+        color: #c98998;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+
+    /* ============ BUTTONS ============ */
+    .btn {
+        border: none;
+        background: rgba(201, 137, 152, 0.12);
+        backdrop-filter: blur(8px);
+        color: #f5e6dc;
+        padding: 14px 32px;
+        margin: 8px 6px;
+        border-radius: 60px;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: 'Inter', sans-serif;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1);
+        border: 1px solid rgba(217, 165, 176, 0.3);
+        box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.7);
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .btn i { font-size: 0.95rem; opacity: 0.85; }
+
+    .btn:hover {
+        background: rgba(201, 137, 152, 0.28);
+        border-color: rgba(232, 188, 196, 0.8);
+        transform: translateY(-3px);
+        box-shadow: 0 18px 34px -12px rgba(0, 0, 0, 0.9), 0 0 25px rgba(201, 137, 152, 0.35);
+        color: #ffffff;
+    }
+
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+        background: linear-gradient(145deg, #8b2d3d, #6b1f2c);
+        border: 1px solid rgba(232, 188, 196, 0.6);
+        color: #f5e6dc;
+        font-weight: 600;
+        box-shadow: 0 14px 30px -10px #6b1f2c, 0 0 20px rgba(139, 45, 61, 0.5);
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(145deg, #a8394c, #7d2634);
+        box-shadow: 0 22px 40px -12px #8b2d3d, 0 0 35px rgba(201, 137, 152, 0.6);
+        color: #ffffff;
+    }
+
+    .btn-ghost {
+        background: transparent;
+        border: 1px solid rgba(201, 137, 152, 0.45);
+    }
+
+    .btn-ghost:hover {
+        background: rgba(201, 137, 152, 0.12);
+        border-color: #c98998;
+    }
+
+    /* ============ ENVELOPE ============ */
+    .envelope-wrapper {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0 25px;
+    }
+
+    .envelope {
+        width: 220px;
+        height: 150px;
+        background: linear-gradient(145deg, #4a1520, #2d0d16);
+        border-radius: 18px;
+        border: 1.5px solid rgba(201, 137, 152, 0.6);
+        position: relative;
+        cursor: pointer;
+        box-shadow:
+            0 25px 45px -12px rgba(0, 0, 0, 0.9),
+            0 0 0 1px rgba(232, 188, 196, 0.1) inset,
+            0 0 40px rgba(139, 45, 61, 0.5);
+        transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1);
+        overflow: hidden;
+    }
+
+    .envelope:hover {
+        transform: scale(1.04) rotate(-0.8deg);
+        border-color: #e8bcc4;
+        box-shadow:
+            0 35px 55px -15px #6b1f2c,
+            0 0 60px rgba(201, 137, 152, 0.7);
+    }
+
+    .envelope::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(135deg, transparent 48%, rgba(201, 137, 152, 0.35) 50%, transparent 52%),
+            linear-gradient(225deg, transparent 48%, rgba(201, 137, 152, 0.35) 50%, transparent 52%);
+        opacity: 0.7;
+    }
+
+    .seal {
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        width: 56px; height: 56px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #c98998, #6b1f2c 70%);
+        color: #f5e6dc;
+        display: grid;
+        place-items: center;
+        font-size: 28px;
+        z-index: 3;
+        box-shadow:
+            0 0 0 3px rgba(232, 188, 196, 0.6),
+            0 8px 20px rgba(0, 0, 0, 0.7),
+            0 0 25px rgba(201, 137, 152, 0.8);
+        transition: all 0.35s ease;
+    }
+
+    .envelope:hover .seal {
+        transform: translate(-50%, -50%) scale(1.12);
+        background: radial-gradient(circle at 30% 30%, #e8bcc4, #8b2d3d 70%);
+        box-shadow:
+            0 0 0 5px rgba(245, 230, 220, 0.7),
+            0 8px 25px black,
+            0 0 40px rgba(232, 188, 196, 0.9);
+    }
+
+    /* ============ PLACES GRID ============ */
+    .places-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin: 25px 0 15px;
+    }
+
+    .place-card {
+        background: rgba(74, 21, 32, 0.55);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(201, 137, 152, 0.3);
+        border-radius: 24px;
+        padding: 24px 16px 20px;
+        cursor: pointer;
+        transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 15px 30px -15px rgba(0, 0, 0, 0.8);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .place-card::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 3px;
+        background: linear-gradient(90deg, transparent, #c98998, #e8bcc4, #c98998, transparent);
+        opacity: 0;
+        transition: opacity 0.4s;
+    }
+
+    .place-card:hover {
+        transform: translateY(-6px) scale(1.02);
+        border-color: #d9a5b0;
+        background: rgba(107, 31, 44, 0.75);
+        box-shadow:
+            0 25px 45px -15px rgba(0, 0, 0, 0.9),
+            0 0 35px rgba(201, 137, 152, 0.4);
+    }
+
+    .place-card:hover::before { opacity: 1; }
+
+    .place-icon {
+        font-size: 2.8rem;
+        margin-bottom: 12px;
+        filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.7));
+        transition: transform 0.35s;
+    }
+
+    .place-card:hover .place-icon { transform: scale(1.12) rotate(3deg); }
+
+    .place-card strong {
+        font-size: 1.05rem;
+        font-weight: 500;
+        color: #f5e6dc;
+        line-height: 1.4;
+        letter-spacing: 0.2px;
+    }
+
+    /* ============ CHOICE BADGE ============ */
+    .choice-badge {
+        display: inline-block;
+        background: rgba(139, 45, 61, 0.35);
+        border: 1px solid rgba(217, 165, 176, 0.5);
+        padding: 8px 22px;
+        border-radius: 60px;
+        font-size: 0.95rem;
+        margin-top: 16px;
+        color: #efd9d2;
+        letter-spacing: 0.3px;
+        backdrop-filter: blur(6px);
+    }
+
+    /* ============ FLOATING HEARTS ============ */
+    .heart {
+        position: fixed;
+        pointer-events: none;
+        animation: floatUp 6s linear forwards;
+        opacity: 0.85;
+        z-index: 100;
+        color: #e8bcc4;
+        text-shadow: 0 0 14px #c98998, 0 0 25px #8b2d3d;
+        font-size: 1.5rem;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(100vh) rotate(0deg) scale(0.8); opacity: 0; }
+        15% { opacity: 0.9; }
+        85% { opacity: 0.6; }
+        100% { transform: translateY(-20vh) rotate(360deg) scale(1.2); opacity: 0; }
+    }
+
+    /* ============ MUSIC CONTROL ============ */
+    .music-control {
+        position: fixed;
+        top: 24px; right: 24px;
+        z-index: 200;
+        background: rgba(45, 13, 22, 0.85);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(201, 137, 152, 0.45);
+        color: #f5e6dc;
+        padding: 12px 22px;
+        border-radius: 60px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 12px 30px -10px black, 0 0 20px rgba(139, 45, 61, 0.5);
+        font-family: 'Inter', sans-serif;
+        letter-spacing: 0.5px;
+    }
+
+    .music-control:hover {
+        background: rgba(107, 31, 44, 0.95);
+        border-color: #e8bcc4;
+        transform: scale(1.04);
+        box-shadow: 0 14px 35px -10px black, 0 0 30px rgba(201, 137, 152, 0.6);
+    }
+
+    .music-control i { font-size: 1.1rem; color: #e8bcc4; }
+
+    audio { display: none; }
+
+    /* ============ DIVIDER ============ */
+    .divider {
+        width: 80px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #c98998, #e8bcc4, #c98998, transparent);
+        margin: 22px auto;
+        opacity: 0.8;
+    }
+
+    /* ============ GLOW TEXT ============ */
+    .glow-text {
+        animation: softGlow 3s infinite alternate;
+    }
+
+    @keyframes softGlow {
+        0% { text-shadow: 0 0 12px rgba(201, 137, 152, 0.3); }
+        100% { text-shadow: 0 0 32px rgba(232, 188, 196, 0.8), 0 0 60px rgba(139, 45, 61, 0.5); }
+    }
+
+    /* ============================================
+       WISH UPON A STAR
+       ============================================ */
+    .wish-box {
+        background: rgba(45, 13, 22, 0.7);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(201, 137, 152, 0.35);
+        border-radius: 28px;
+        padding: 24px 20px;
+        margin: 24px auto 0;
+        max-width: 520px;
+        box-shadow:
+            0 25px 50px -20px black,
+            0 0 0 1px rgba(232, 188, 196, 0.08) inset,
+            0 0 60px rgba(139, 45, 61, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .wish-box::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #c98998, #e8bcc4, #c98998, transparent);
+        opacity: 0.9;
+    }
+
+    #wishInput {
+        width: 100%;
+        background: rgba(26, 6, 12, 0.8);
+        border: 1px solid rgba(201, 137, 152, 0.4);
+        border-radius: 18px;
+        padding: 16px 18px;
+        color: #f5e6dc;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.05rem;
+        font-style: italic;
+        resize: none;
+        outline: none;
+        transition: all 0.35s;
+        line-height: 1.6;
+        box-sizing: border-box;
+    }
+
+    #wishInput:focus {
+        border-color: #e8bcc4;
+        box-shadow:
+            0 0 0 4px rgba(201, 137, 152, 0.18),
+            0 0 35px rgba(201, 137, 152, 0.4) inset;
+        background: rgba(45, 13, 22, 0.95);
+    }
+
+    #wishInput::placeholder {
+        color: #a0707e;
+        font-style: italic;
+    }
+
+    .wish-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .wish-list {
+        background: rgba(26, 6, 12, 0.9);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(201, 137, 152, 0.35);
+        border-radius: 24px;
+        padding: 24px 20px;
+        margin: 24px auto 0;
+        max-width: 520px;
+        max-height: 340px;
+        overflow-y: auto;
+        animation: elegantFade 0.5s;
+    }
+
+    .wish-item {
+        background: rgba(107, 31, 44, 0.25);
+        border: 1px solid rgba(201, 137, 152, 0.25);
+        border-radius: 16px;
+        padding: 12px 16px 12px 42px;
+        margin-bottom: 10px;
+        text-align: left;
+        font-style: italic;
+        font-family: 'Playfair Display', serif;
+        color: #efd9d2;
+        font-size: 0.98rem;
+        line-height: 1.5;
+        position: relative;
+        animation: slideInWish 0.5s backwards;
+    }
+
+    .wish-item::before {
+        content: "✦";
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #e8bcc4;
+        font-size: 1.1rem;
+        text-shadow: 0 0 14px #c98998;
+    }
+
+    .wish-item .wish-date {
+        display: block;
+        font-size: 0.72rem;
+        color: #a0707e;
+        margin-top: 4px;
+        font-style: normal;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+
+    @keyframes slideInWish {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ============ FLYING STAR ============ */
+    .flying-star {
+        position: fixed;
+        pointer-events: none;
+        font-size: 1.8rem;
+        z-index: 9999;
+        color: #f5e6dc;
+        text-shadow:
+            0 0 20px #e8bcc4,
+            0 0 40px #c98998,
+            0 0 60px #8b2d3d;
+        animation: flyToSky 2.3s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+    }
+
+    @keyframes flyToSky {
+        0% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+        60% { opacity: 1; transform: translate(var(--dx), -180px) scale(1.5) rotate(180deg); }
+        100% { opacity: 0; transform: translate(var(--dx), -50vh) scale(0.4) rotate(360deg); }
+    }
+
+    /* ============ CONFETTI ============ */
+    .confetti {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        pointer-events: none;
+        z-index: 9998;
+        animation: confettiFall 2.6s cubic-bezier(0.2, 0.6, 0.6, 1) forwards;
+        border-radius: 2px;
+    }
+
+    @keyframes confettiFall {
+        0% { opacity: 1; transform: translate(0, 0) rotate(0deg); }
+        100% { opacity: 0; transform: translate(var(--cx), var(--cy)) rotate(720deg); }
+    }
+
+    /* ============ CANVAS BINTANG ============ */
+    #starCanvas {
+        position: absolute;
+        inset: -40px;
+        width: calc(100% + 80px);
+        height: calc(100% + 80px);
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.85;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 560px) {
+        .places-grid { grid-template-columns: 1fr; }
+        .glass-panel { padding: 26px 18px; border-radius: 32px; }
+        .btn { padding: 12px 22px; font-size: 0.95rem; }
+        .wish-actions .btn { width: 100%; margin: 4px 0; }
+        .music-control {
+            top: 16px; right: 16px;
+            padding: 10px 18px;
+            font-size: 0.8rem;
+        }
+        .envelope { width: 180px; height: 125px; }
+        .seal { width: 46px; height: 46px; font-size: 22px; }
+    }
+
+    /* ============ SCROLLBAR ============ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1a060c; }
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(#8b2d3d, #6b1f2c);
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: #c98998; }
+</style>
+</head>
+<body>
+
+<!-- ============ AUDIO ============ -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="Apocalypse - SOUND BACKGROUND.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+</audio>
+
+<!-- ============ MUSIC TOGGLE ============ -->
+<div class="music-control" onclick="toggleMusic()">
+    <i class="fas fa-music" id="musicIcon"></i>
+    <span id="musicText">Play</span>
+</div>
+
+<!-- ============ MAIN PANEL ============ -->
+<div class="glass-panel">
+
+    <!-- ===== PAGE 1 : Envelope ===== -->
+    <section id="p1" class="page active">
+        <div style="text-align: center;">
+            <div class="envelope-wrapper">
+                <div class="envelope" onclick="openLetter()">
+                    <div class="seal">♡</div>
+                </div>
+            </div>
+            <p class="small" style="letter-spacing: 4px; margin-bottom: 6px;">✦ undangan ✦</p>
+            <h1 style="font-size: clamp(2rem, 7vw, 3.2rem);">Hey, you.</h1>
+            <p style="font-size: 1.1rem; max-width: 400px; margin: 10px auto;">I made something special for you.</p>
+            <p class="small" style="margin-top: 20px; opacity: 0.85;">tap the envelope ♡</p>
+        </div>
+    </section>
+
+    <!-- ===== PAGE 2 : I like you ===== -->
+    <section id="p2" class="page">
+        <div style="text-align: center;">
+            <p class="small" style="letter-spacing: 3px; margin-bottom: 12px;">finally...</p>
+            <h2 style="font-weight: 400;">there’s something i want to tell you</h2>
+            <div class="divider"></div>
+            <h1 style="font-size: clamp(2.8rem, 9vw, 4.2rem);" class="glow-text">
+                I like you. <span style="color: #e8bcc4;">❤️</span>
+            </h1>
+            <p style="margin: 24px 0 20px; font-size: 1.15rem;">And I wanted you to know.</p>
+            <button class="btn btn-primary" onclick="go('p3')">
+                <i class="fas fa-arrow-right"></i> continue
+            </button>
+        </div>
+    </section>
+
+    <!-- ===== PAGE 3 : Would you go out? ===== -->
+    <section id="p3" class="page">
+        <div style="text-align: center;">
+            <h2 style="font-weight: 400; margin-bottom: 18px;">
+                would you like to go out with me? <span style="color: #e8bcc4;">❤️</span>
+            </h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 20px 0;">
+                <button class="btn btn-primary" onclick="go('p4')">
+                    <i class="fas fa-heart"></i> YES
+                </button>
+                <button class="btn btn-ghost" onclick="sayNo()">
+                    <i class="fas fa-leaf"></i> NO
+                </button>
+            </div>
+            <p id="noMsg" class="small" style="margin-top: 22px; min-height: 28px; font-style: italic;"></p>
+        </div>
+    </section>
+
+    <!-- ===== PAGE 4 : Choose place ===== -->
+    <section id="p4" class="page">
+        <div style="text-align: center;">
+            <h2 style="font-weight: 400; margin-bottom: 8px;">yay!! <span style="color: #e8bcc4;">♡</span></h2>
+            <p style="margin-bottom: 6px;">now... choose a place for us.</p>
+            <div class="places-grid">
+                <div class="place-card" onclick="selectPlace('Golden Theater Kediri','https://maps.app.goo.gl/YS6pwduyFjp6imm49?g_st=aw')">
+                    <div class="place-icon">🎬</div>
+                    <strong>Golden Theater Kediri</strong>
+                </div>
+                <div class="place-card" onclick="selectPlace('Lapangan Tulungrejo Kampung Inggris','https://maps.app.goo.gl/q3jxJt9sAcy8WG4m8?g_st=aw')">
+                    <div class="place-icon">🌿</div>
+                    <strong>Lapangan Tulungrejo Kampung Inggris</strong>
+                </div>
+                <div class="place-card" onclick="selectPlace('Perpustakaan Publik Mastrip','https://maps.app.goo.gl/QsNARJuDc5HBoJNy8?g_st=aw')">
+                    <div class="place-icon">📚</div>
+                    <strong>Perpustakaan Publik Mastrip</strong>
+                </div>
+                <div class="place-card" onclick="selectPlace('One Coffee Bar Pare','https://maps.app.goo.gl/GyWRPEheTBPVeqJC9?g_st=aw')">
+                    <div class="place-icon">☕</div>
+                    <strong>One Coffee Bar Pare</strong>
+                </div>
+            </div>
+            <p id="choice" class="choice-badge" style="display: inline-block; margin-top: 10px;">— belum dipilih —</p>
+        </div>
+    </section>
+
+    <!-- ===== PAGE 5 : Selected place ===== -->
+    <section id="p5" class="page">
+        <div style="text-align: center;">
+            <h2 style="font-weight: 400;">This one! <span style="color: #e8bcc4;">→ ❤️</span></h2>
+            <div class="divider"></div>
+            <p id="selectedPlace" style="font-size: 1.5rem; font-family: 'Playfair Display', serif; color: #efd9d2; margin: 16px 0 28px;">—</p>
+            <button class="btn btn-primary" onclick="openMap()">
+                <i class="fas fa-map-pin"></i> open location
+            </button>
+            <button class="btn btn-ghost" onclick="go('p6')" style="margin-left: 8px;">
+                <i class="fas fa-arrow-right"></i> continue
+            </button>
+        </div>
+    </section>
+
+    <!-- ===== PAGE 6 : Wish Upon A Star ===== -->
+    <section id="p6" class="page">
+        <div style="text-align: center; position: relative;">
+            <canvas id="starCanvas"></canvas>
+            <div style="position: relative; z-index: 2;">
+                <p class="small" style="letter-spacing: 4px; margin-bottom: 8px;">✦ wish upon a star ✦</p>
+                <h2 style="font-weight: 400; margin-bottom: 10px;">
+                    tuliskan satu harapan<br>untuk kita ♡
+                </h2>
+                <div class="divider"></div>
+
+                <div class="wish-box">
+                    <textarea id="wishInput" placeholder="Aku berharap..." maxlength="120" rows="3"></textarea>
+                    <div class="wish-actions">
+                        <button class="btn btn-primary" onclick="sendWish()">
+                            <i class="fas fa-star"></i> Kirim ke Langit
+                        </button>
+                        <button class="btn btn-ghost" onclick="showWishes()">
+                            <i class="fas fa-book-open"></i> Lihat Harapan
+                        </button>
+                    </div>
+                    <p id="wishStatus" class="small" style="margin-top: 16px; min-height: 22px; font-style: italic; color: #c98998;"></p>
+                </div>
+
+                <div id="wishList" class="wish-list" style="display: none;">
+                    <p class="small" style="letter-spacing: 3px; margin-bottom: 12px;">✦ harapan yang tersimpan ✦</p>
+                    <div id="wishItems"></div>
+                    <button class="btn btn-ghost" onclick="closeWishes()" style="margin-top: 16px;">
+                        <i class="fas fa-times"></i> Tutup
+                    </button>
+                </div>
+
+                <button class="btn btn-ghost" onclick="go('p1')" style="margin-top: 24px;">
+                    <i class="fas fa-rotate-left"></i> kembali ke awal
+                </button>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script>
+/* ============================================================
+   NAVIGASI HALAMAN
+   ============================================================ */
+function go(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Trigger khusus untuk halaman wish
+    if (id === 'p6') {
+        const status = document.getElementById('wishStatus');
+        if (status) {
+            status.textContent = savedWishes.length > 0
+                ? `sudah ada ${savedWishes.length} harapan tersimpan ♡`
+                : 'tulis harapan pertamamu ✨';
+            status.style.color = '#c98998';
+        }
+        document.getElementById('wishList').style.display = 'none';
+    }
+}
+
+/* ============================================================
+   MUSIK
+   ============================================================ */
+const music = document.getElementById('bgMusic');
+const musicIcon = document.getElementById('musicIcon');
+const musicText = document.getElementById('musicText');
+
+function openLetter() {
+    music.play().then(() => {
+        musicIcon.className = 'fas fa-pause';
+        musicText.textContent = 'Pause';
+    }).catch(() => {});
+    go('p2');
+}
+
+function toggleMusic() {
+    if (music.paused) {
+        music.play().then(() => {
+            musicIcon.className = 'fas fa-pause';
+            musicText.textContent = 'Pause';
+        }).catch(() => {
+            musicText.textContent = 'Error';
+            setTimeout(() => { musicText.textContent = 'Play'; }, 1000);
+        });
+    } else {
+        music.pause();
+        musicIcon.className = 'fas fa-music';
+        musicText.textContent = 'Play';
+    }
+}
+
+music.addEventListener('play', () => {
+    musicIcon.className = 'fas fa-pause';
+    musicText.textContent = 'Pause';
+});
+music.addEventListener('pause', () => {
+    musicIcon.className = 'fas fa-music';
+    musicText.textContent = 'Play';
+});
+
+/* ============================================================
+   RESPON TOMBOL NO
+   ============================================================ */
+function sayNo() {
+    const msg = document.getElementById('noMsg');
+    msg.textContent = 'That’s completely okay ♡ Thank you for being honest.';
+    msg.style.color = '#e8bcc4';
+}
+
+/* ============================================================
+   PILIH TEMPAT
+   ============================================================ */
+let selectedUrl = '';
+
+function selectPlace(name, url) {
+    selectedUrl = url;
+    document.getElementById('selectedPlace').textContent = name;
+    document.getElementById('choice').textContent = 'Selected: ' + name + ' ♡';
+    setTimeout(() => go('p5'), 240);
+}
+
+function openMap() {
+    if (selectedUrl) {
+        window.open(selectedUrl, '_blank');
+    } else {
+        alert('Silakan pilih tempat terlebih dahulu ♡');
+    }
+}
+
+/* ============================================================
+   HATI MELAYANG
+   ============================================================ */
+function createFloatingElement() {
+    const symbols = ['♡', '♥', '✦', '✧', '❥', '❤'];
+    const el = document.createElement('div');
+    el.className = 'heart';
+    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.fontSize = (14 + Math.random() * 22) + 'px';
+    el.style.animationDuration = (4 + Math.random() * 4) + 's';
+    el.style.opacity = 0.5 + Math.random() * 0.5;
+    document.body.appendChild(el);
+    setTimeout(() => { if (el.parentNode) el.remove(); }, 8000);
+}
+setInterval(createFloatingElement, 900);
+
+/* ============================================================
+   WISH UPON A STAR
+   ============================================================ */
+let savedWishes = JSON.parse(localStorage.getItem('ourWishes') || '[]');
+
+function sendWish() {
+    const input = document.getElementById('wishInput');
+    const status = document.getElementById('wishStatus');
+    const text = input.value.trim();
+
+    if (!text) {
+        status.textContent = 'tulis dulu harapanmu ya ♡';
+        status.style.color = '#e8bcc4';
+        return;
+    }
+
+    const wish = {
+        text: text,
+        date: new Date().toLocaleDateString('id-ID', {
+            day: 'numeric', month: 'short', year: 'numeric',
+            hour: '2-digit', minute: '2-digit'
+        })
+    };
+    savedWishes.push(wish);
+    localStorage.setItem('ourWishes', JSON.stringify(savedWishes));
+
+    createFlyingStar(text);
+    burstConfetti();
+
+    for (let i = 0; i < 8; i++) {
+        setTimeout(createFloatingElement, i * 100);
+    }
+
+    input.value = '';
+    status.textContent = '✨ harapanmu sudah tersimpan di langit ✨';
+    status.style.color = '#e8bcc4';
+
+    setTimeout(() => {
+        if (status.textContent.includes('tersimpan')) {
+            status.textContent = 'tulis harapan lain? ♡';
+            status.style.color = '#c98998';
+        }
+    }, 4000);
+
+    if (document.getElementById('wishList').style.display === 'block') {
+        renderWishes();
+    }
+}
+
+function createFlyingStar(text) {
+    const star = document.createElement('div');
+    star.className = 'flying-star';
+    star.textContent = '✦';
+
+    const box = document.querySelector('.wish-box');
+    const rect = box.getBoundingClientRect();
+    star.style.left = (rect.left + rect.width / 2) + 'px';
+    star.style.top = (rect.top + rect.height / 2) + 'px';
+
+    const dx = (Math.random() - 0.5) * 200;
+    star.style.setProperty('--dx', dx + 'px');
+
+    document.body.appendChild(star);
+    setTimeout(() => star.remove(), 2400);
+}
+
+function burstConfetti() {
+    const colors = ['#e8bcc4', '#c98998', '#d9a5b0', '#f5e6dc', '#8b2d3d', '#6b1f2c'];
+    const count = 45;
+
+    for (let i = 0; i < count; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.left = '50%';
+        c.style.top = '50%';
+        const size = 4 + Math.random() * 8;
+        c.style.width = size + 'px';
+        c.style.height = size + 'px';
+        c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+
+        const angle = (Math.PI * 2 * i) / count + Math.random() * 0.5;
+        const dist = 120 + Math.random() * 260;
+        c.style.setProperty('--cx', Math.cos(angle) * dist + 'px');
+        c.style.setProperty('--cy', Math.sin(angle) * dist + 'px');
+
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 2700);
+    }
+}
+
+function showWishes() {
+    const list = document.getElementById('wishList');
+    list.style.display = 'block';
+    renderWishes();
+}
+
+function closeWishes() {
+    document.getElementById('wishList').style.display = 'none';
+}
+
+function renderWishes() {
+    const container = document.getElementById('wishItems');
+    container.innerHTML = '';
+
+    if (savedWishes.length === 0) {
+        container.innerHTML = '<p class="small" style="font-style:italic;opacity:0.6;">belum ada harapan tersimpan...</p>';
+        return;
+    }
+
+    savedWishes.slice().reverse().forEach((w, idx) => {
+        const item = document.createElement('div');
+        item.className = 'wish-item';
+        item.style.animationDelay = (idx * 0.06) + 's';
+        item.innerHTML = `"${w.text}"<span class="wish-date">${w.date}</span>`;
+        container.appendChild(item);
+    });
+}
+
+/* ============================================================
+   CANVAS BINTANG LATAR
+   ============================================================ */
+(function initStarCanvas() {
+    const canvas = document.getElementById('starCanvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    let w, h;
+
+    function resize() {
+        const rect = canvas.getBoundingClientRect();
+        w = canvas.width = rect.width;
+        h = canvas.height = rect.height;
+
+        stars = [];
+        const starCount = Math.floor((w * h) / 4200);
+        for (let i = 0; i < starCount; i++) {
+            stars.push({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                r: Math.random() * 1.4 + 0.3,
+                alpha: Math.random(),
+                speed: 0.005 + Math.random() * 0.015,
+                twinkle: Math.random() * Math.PI * 2
+            });
+        }
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+
+        stars.forEach(s => {
+            s.twinkle += 0.03;
+            const a = 0.3 + Math.abs(Math.sin(s.twinkle)) * 0.7;
+
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(232, 188, 196, ${a * 0.9})`;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#c98998';
+            ctx.fill();
+        });
+
+        requestAnimationFrame(draw);
+    }
+
+    resize();
+    draw();
+    window.addEventListener('resize', resize);
+})();
+
+/* ============================================================
+   WELCOME EFFECT
+   ============================================================ */
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        for (let i = 0; i < 6; i++) {
+            setTimeout(createFloatingElement, i * 150);
+        }
+    }, 400);
+});
+</script>
+</body>
+</html>
